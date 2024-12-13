@@ -6,7 +6,7 @@ tags:
   - privileged
 ---
 
-# Component: `github`
+# Component: `github-oidc-role`
 
 This component is responsible for creating IAM roles for GitHub Actions to assume.
 
