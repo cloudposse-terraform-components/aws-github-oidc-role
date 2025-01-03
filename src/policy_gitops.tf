@@ -9,10 +9,10 @@ variable "gitops_policy_configuration" {
   nullable    = false
   description = <<-EOT
     Configuration for the GitOps IAM Policy, valid keys are
-     - `s3_bucket_component_name` - Component Name of where to store the TF Plans in S3, defaults to `gitops/s3-bucket`
-     - `dynamodb_component_name` - Component Name of where to store the TF Plans in Dynamodb, defaults to `gitops/dynamodb`
-     - `s3_bucket_environment_name` - Environment name for the S3 Bucket, defaults to current environment
-     - `dynamodb_environment_name` - Environment name for the Dynamodb Table, defaults to current environment
+    - `s3_bucket_component_name` - Component Name of where to store the TF Plans in S3, defaults to `gitops/s3-bucket`
+    - `dynamodb_component_name` - Component Name of where to store the TF Plans in Dynamodb, defaults to `gitops/dynamodb`
+    - `s3_bucket_environment_name` - Environment name for the S3 Bucket, defaults to current environment
+    - `dynamodb_environment_name` - Environment name for the Dynamodb Table, defaults to current environment
   EOT
 }
 
