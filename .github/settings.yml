@@ -5,5 +5,3 @@ repository:
   description: This component is responsible for creating IAM roles for GitHub Actions to assume
   homepage: https://cloudposse.com/accelerate
   topics: terraform, terraform-component
-
-
