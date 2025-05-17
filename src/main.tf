@@ -17,7 +17,7 @@ module "iam_policy" {
   enabled = local.enabled && length(var.iam_policy) > 0
 
   source  = "cloudposse/iam-policy/aws"
-  version = "2.0.1"
+  version = "2.0.2"
 
   iam_policy = var.iam_policy
 
