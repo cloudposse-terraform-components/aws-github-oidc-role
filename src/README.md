@@ -197,7 +197,7 @@ There are two methods for adding custom policies to the IAM role.
 |------|--------|---------|
 | <a name="module_dynamodb"></a> [dynamodb](#module\_dynamodb) | cloudposse/stack-config/yaml//modules/remote-state | 1.5.0 |
 | <a name="module_gha_assume_role"></a> [gha\_assume\_role](#module\_gha\_assume\_role) | ../account-map/modules/team-assume-role-policy | n/a |
-| <a name="module_iam_policy"></a> [iam\_policy](#module\_iam\_policy) | cloudposse/iam-policy/aws | 2.0.1 |
+| <a name="module_iam_policy"></a> [iam\_policy](#module\_iam\_policy) | cloudposse/iam-policy/aws | 2.0.2 |
 | <a name="module_iam_roles"></a> [iam\_roles](#module\_iam\_roles) | ../account-map/modules/iam-roles | n/a |
 | <a name="module_s3_artifacts_bucket"></a> [s3\_artifacts\_bucket](#module\_s3\_artifacts\_bucket) | cloudposse/stack-config/yaml//modules/remote-state | 1.5.0 |
 | <a name="module_s3_bucket"></a> [s3\_bucket](#module\_s3\_bucket) | cloudposse/stack-config/yaml//modules/remote-state | 1.5.0 |
