@@ -28,6 +28,7 @@ module "gha_assume_role" {
   source = "../account-map/modules/team-assume-role-policy"
 
   trusted_github_repos = var.github_actions_allowed_repos
+  github_oidc_provider_component_name = var.github_oidc_provider_component_name
 
   context = module.this.context
 }

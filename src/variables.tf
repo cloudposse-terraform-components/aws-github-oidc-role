@@ -44,7 +44,6 @@ variable "iam_policy" {
   nullable    = false
 }
 
-
 variable "github_actions_allowed_repos" {
   type        = list(string)
   description = <<EOF
@@ -53,4 +52,10 @@ variable "github_actions_allowed_repos" {
   If org part of repo name is omitted, "cloudposse" will be assumed.
   EOF
   default     = []
+}
+
+variable "github_oidc_provider_component_name" {
+  type        = string
+  description = "The name of the github-oidc-provider component"
+  default     = "github-oidc-provider"
 }
