@@ -54,3 +54,9 @@ variable "github_actions_allowed_repos" {
   EOF
   default     = []
 }
+
+variable "max_session_duration" {
+  type        = number
+  description = "Maximum session duration (in seconds). This setting can have a value from 1 hour to 12 hours"
+  default     = 3600
+}
