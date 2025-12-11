@@ -37,6 +37,8 @@ resource "aws_iam_role" "github_actions" {
 
   name               = module.this.id
   assume_role_policy = module.gha_assume_role.github_assume_role_policy
+  
+  max_session_duration = var.max_session_duration
 
   managed_policy_arns = local.policies
 
