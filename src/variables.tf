@@ -60,3 +60,18 @@ variable "max_session_duration" {
   description = "Maximum session duration (in seconds). This setting can have a value from 1 hour to 12 hours"
   default     = 3600
 }
+
+variable "role_description" {
+  type        = string
+  description = "The description of the IAM role"
+  default     = ""
+}
+
+variable "use_fullname" {
+  type        = bool
+  default     = true
+  description = <<-EOT
+  If set to `true`, the full label ID will be used as the IAM role name. If set to `false`, only `var.name` will be used.
+  Useful to set to `false` when the full label ID exceeds the IAM role name length limit of 64 characters.
+  EOT
+}
