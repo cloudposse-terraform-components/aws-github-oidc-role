@@ -112,6 +112,37 @@ usage: |-
                     - "*"
   ```
 
+  ### Creating a Role Using Only the `name` Input
+
+  By default, the IAM role name is derived from the full label context
+  (e.g. `acme-core-gbl-auto-gha-iam`). If you want the role to use only the value
+  of `var.name` (e.g. `GitHubActionsRole`), set `use_fullname: false`:
+
+  ```yaml
+  # stacks/catalog/github-oidc-role/named-role.yaml
+  import:
+    - catalog/github-oidc-role/defaults
+
+  components:
+    terraform:
+      github-oidc-role/named-role:
+        metadata:
+          component: github-oidc-role
+          inherits:
+            - github-oidc-role/defaults
+        vars:
+          enabled: true
+          name: GitHubActionsRole
+          use_fullname: false
+          github_actions_allowed_repos:
+            - "MyOrg/my-repo"
+  ```
+
+  This mirrors the behavior of the `use_fullname` input from the upstream
+  [`cloudposse/terraform-aws-iam-role`](https://github.com/cloudposse/terraform-aws-iam-role) module, and follows the
+  same convention as `bucket_name` in the `cloudposse/terraform-aws-s3-bucket` module and component, where a short
+  name can be supplied instead of the full context-derived ID.
+
   ### Adding Custom Policies
 
   There are two methods for adding custom policies to the IAM role.

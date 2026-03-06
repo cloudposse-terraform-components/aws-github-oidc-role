@@ -55,6 +55,21 @@ variable "github_actions_allowed_repos" {
   default     = []
 }
 
+variable "use_fullname" {
+  type        = bool
+  default     = true
+  description = <<-EOT
+  If set to `true`, the full ID for the IAM role name (e.g. `[var.namespace]-[var.environment]-[var.stage]-[var.name]`) will be used.
+
+  If set to `false`, only `var.name` will be used for the IAM role name.
+
+  This input mirrors the `use_fullname` variable from the upstream
+  [`cloudposse/terraform-aws-iam-role`](https://github.com/cloudposse/terraform-aws-iam-role) module and follows the same
+  convention as `bucket_name` in the `cloudposse/terraform-aws-s3-bucket` module and component, where a short name
+  can be provided instead of the full context-derived ID.
+  EOT
+}
+
 variable "max_session_duration" {
   type        = number
   description = "Maximum session duration (in seconds). This setting can have a value from 1 hour to 12 hours"

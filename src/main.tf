@@ -35,7 +35,7 @@ module "gha_assume_role" {
 resource "aws_iam_role" "github_actions" {
   count = local.enabled ? 1 : 0
 
-  name                 = module.this.id
+  name                 = var.use_fullname ? module.this.id : module.this.name
   assume_role_policy   = module.gha_assume_role.github_assume_role_policy
   max_session_duration = var.max_session_duration
 
