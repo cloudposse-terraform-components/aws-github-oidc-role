@@ -36,11 +36,11 @@ module "github_oidc_role" {
   source  = "cloudposse/iam-role/aws"
   version = "0.22.0"
 
-  assume_role_policy    = module.gha_assume_role.github_assume_role_policy
-  role_description      = var.role_description
-  max_session_duration  = var.max_session_duration
-  managed_policy_arns   = toset(coalesce(local.policies, []))
-  use_fullname          = var.use_fullname
+  assume_role_policy   = module.gha_assume_role.github_assume_role_policy
+  role_description     = var.role_description
+  max_session_duration = var.max_session_duration
+  managed_policy_arns  = toset(coalesce(local.policies, []))
+  use_fullname         = var.use_fullname
   # Disable the module's built-in policy creation; inline policies are managed
   # separately via aws_iam_role_policy resources to support multiple named policies.
   policy_document_count = 0
