@@ -18,7 +18,7 @@ variable "gitops_policy_configuration" {
 
 locals {
   gitops_policy_enabled = contains(var.iam_policies, "gitops")
-  gitops_policy         = local.gitops_policy_enabled ? one(data.aws_iam_policy_document.gitops_iam_policy.*.json) : null
+  gitops_policy         = local.gitops_policy_enabled ? one(data.aws_iam_policy_document.gitops_iam_policy[*].json) : null
 
   s3_bucket_arn      = one(module.s3_bucket[*].outputs.bucket_arn)
   dynamodb_table_arn = one(module.dynamodb[*].outputs.table_arn)

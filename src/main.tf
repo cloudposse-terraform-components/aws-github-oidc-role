@@ -5,7 +5,7 @@ locals {
   policy_document_map = {
     "gitops"        = local.gitops_policy
     "lambda_cicd"   = local.lambda_cicd_policy
-    "inline_policy" = one(module.iam_policy.*.json)
+    "inline_policy" = one(module.iam_policy[*].json)
   }
   custom_policy_map = merge(local.policy_document_map, local.overridable_additional_custom_policy_map)
 
