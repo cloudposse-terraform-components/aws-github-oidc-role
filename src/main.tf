@@ -5,7 +5,7 @@ locals {
   policy_document_map = {
     "gitops"        = local.gitops_policy
     "lambda_cicd"   = local.lambda_cicd_policy
-    "inline_policy" = one(module.iam_policy.*.json)
+    "inline_policy" = one(module.iam_policy[*].json)
   }
   custom_policy_map = merge(local.policy_document_map, local.overridable_additional_custom_policy_map)
 
@@ -35,7 +35,7 @@ module "gha_assume_role" {
 resource "aws_iam_role" "github_actions" {
   count = local.enabled ? 1 : 0
 
-  name                 = module.this.id
+  name                 = var.use_fullname ? module.this.id : module.this.name
   assume_role_policy   = module.gha_assume_role.github_assume_role_policy
   max_session_duration = var.max_session_duration
 
