@@ -209,7 +209,7 @@ There are two methods for adding custom policies to the IAM role.
 
 | Name | Type |
 |------|------|
-| [aws_iam_role.github_actions](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [module.github_actions_role](https://registry.terraform.io/modules/cloudposse/iam-role/aws/latest) | module |
 | [aws_iam_policy_document.gitops_iam_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.lambda_cicd_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
