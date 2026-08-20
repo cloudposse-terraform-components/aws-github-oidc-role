@@ -26,7 +26,7 @@ variable "lambda_cicd_policy_configuration" {
 
 locals {
   lambda_cicd_policy_enabled = contains(var.iam_policies, "lambda-cicd")
-  lambda_cicd_policy         = local.lambda_cicd_policy_enabled ? one(data.aws_iam_policy_document.lambda_cicd_policy.*.json) : null
+  lambda_cicd_policy         = local.lambda_cicd_policy_enabled ? one(data.aws_iam_policy_document.lambda_cicd_policy[*].json) : null
 
   lambda_bucket_arn = try(module.s3_artifacts_bucket[0].outputs.bucket_arn, null)
 }
