@@ -1,7 +1,6 @@
 locals {
   enabled          = module.this.enabled
   managed_policies = [for arn in var.iam_policies : arn if can(regex("^arn:aws[^:]*:iam::aws:policy/", arn))]
-  policies         = length(local.managed_policies) > 0 ? local.managed_policies : null
   policy_document_map = {
     "gitops"        = local.gitops_policy
     "lambda_cicd"   = local.lambda_cicd_policy
@@ -32,20 +31,18 @@ module "gha_assume_role" {
   context = module.this.context
 }
 
-resource "aws_iam_role" "github_actions" {
-  count = local.enabled ? 1 : 0
+module "github_actions_role" {
+  source = "cloudposse/iam-role/aws"
 
-  name                 = var.use_fullname ? module.this.id : module.this.name
-  assume_role_policy   = module.gha_assume_role.github_assume_role_policy
-  max_session_duration = var.max_session_duration
+  enabled = local.enabled
 
-  managed_policy_arns = local.policies
-
-  dynamic "inline_policy" {
-    for_each = local.active_policy_map
-    content {
-      name   = inline_policy.key
-      policy = inline_policy.value
-    }
-  }
+  name                  = module.this.name
+  use_fullname          = var.use_fullname
+  context               = module.this.context
+  role_description      = "IAM role for GitHub Actions"
+  assume_role_policy    = module.gha_assume_role.github_assume_role_policy
+  max_session_duration  = var.max_session_duration
+  managed_policy_arns   = local.managed_policies
+  policy_document_count = length(values(local.active_policy_map))
+  policy_documents      = values(local.active_policy_map)
 }
